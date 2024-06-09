@@ -1,0 +1,18 @@
+version: '3'
+services:
+  app:
+    container_name: auth-nodejs-auth
+    image: auth-nodejs-auth:lts
+    build:
+      context: .
+      dockerfile: Dockerfile
+    env_file: 
+      - .env
+    environment:
+      APP_PORT: ${APP_PORT}
+      JWT_SECRET: ${JWT_SECRET}
+      MONGO_URI: ${MONGO_URI}
+    ports:
+      - 3000:3000
+    volumes:
+      - .:/app
