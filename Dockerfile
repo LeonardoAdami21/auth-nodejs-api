@@ -5,7 +5,7 @@ FROM node:lts
 WORKDIR /app
 
 # Copiar los archivos de la aplicación al contenedor
-COPY package*.json ./ or yarn.lock * ./
+COPY package*.json yarn.lock * ./
 
 # Instalar las dependencias de la aplicación
 RUN npm install or yarn install
@@ -17,4 +17,4 @@ COPY . .
 EXPOSE ${APP_PORT}
 
 # Comando para iniciar la aplicación
-CMD [ "npm", "dev", "or", "yarn", "dev"]
+CMD ["yarn", "dev"]

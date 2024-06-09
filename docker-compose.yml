@@ -13,6 +13,6 @@ services:
       JWT_SECRET: ${JWT_SECRET}
       MONGO_URI: ${MONGO_URI}
     ports:
-      - 3000:3000
+      - '${APP_PORT}:3000'
     volumes:
       - .:/app

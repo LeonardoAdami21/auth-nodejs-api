@@ -7,8 +7,6 @@
 # Arquivos de log
 /logs
 
-# Arquivos de configuração
-/config/*.env
 
 # Arquivos de cache
 /.cache
@@ -21,9 +19,3 @@
 
 # Arquivos de ambiente local
 .env
-
-# Arquivos de ambiente de desenvolvimento
-.env.development
-
-# Arquivos de ambiente de produção
-.env.production
