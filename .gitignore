@@ -4,7 +4,7 @@
 /node_modules
 
 # Arquivos gerados pelo ambiente de desenvolvimento
-./.env
+.env
 .env.local*
 
 # Arquivos de log
