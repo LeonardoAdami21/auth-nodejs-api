@@ -22,8 +22,4 @@
 # Arquivos de ambiente local
 .env
 
-# Arquivos de ambiente de desenvolvimento
-.env.development
-
-# Arquivos de ambiente de produção
-.env.production
+.vscode
