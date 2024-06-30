@@ -9,12 +9,15 @@
     {
       "name": "Authentication",
       "description": "Endpoints for user authentication"
+    },
+    {
+      "name": "User",
+      "description": "Endpoints for user management"
     }
   ],
+
   "servers": [
-    { "url": "http://localhost:7000",
-      "description": "Development server"
-    }
+    { "url": "http://localhost:7000", "description": "Development server" }
   ],
   "paths": {
     "/login": {
@@ -73,6 +76,120 @@
           }
         }
       }
+    },
+    "/users": {
+      "get": {
+        "summary": "Get all users",
+        "tags": ["User"],
+        "description": "Endpoint to get all users",
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/users/{id}": {
+      "get": {
+        "summary": "Get a user by ID",
+        "tags": ["User"],
+        "description": "Endpoint to get a user",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "User ID",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "User not found"
+          }
+        }
+      },
+      "patch": {
+        "summary": "Update a user",
+        "tags": ["User"],
+        "description": "Endpoint to update a user",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "User ID",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserUpdateRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete a user",
+        "tags": ["User"],
+        "description": "Endpoint to delete a user",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "User ID",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Successful operation"
+          },
+          "404": {
+            "description": "User not found"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
     }
   },
   "components": {
@@ -114,6 +231,20 @@
           }
         },
         "required": ["name", "documen", "email", "password"]
+      },
+      "UserUpdateRequest": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "document": {
+            "type": "string"
+          }
+        }
       }
     }
   }
